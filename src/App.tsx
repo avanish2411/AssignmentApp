@@ -1,14 +1,16 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React from 'react';
+import { SafeAreaView, StatusBar } from 'react-native';
+import  AppNavigation  from '../src/Navigation/AppNavigation';
 
 const App = () => {
   return (
-    <View>
-      <Text>App</Text>
-    </View>
-  )
-}
+    <>
+      <StatusBar barStyle="dark-content" />
+      <SafeAreaView style={{ flex: 1 }}>
+        <AppNavigation />
+      </SafeAreaView>
+    </>
+  );
+};
 
-export default App
-
-const styles = StyleSheet.create({})
+export default App;
