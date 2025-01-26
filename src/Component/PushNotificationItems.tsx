@@ -4,10 +4,12 @@ import ToggleSwitch from 'toggle-switch-react-native';
 
 type Props = {
   title: string;
+  check: boolean;
+  state: (value: boolean) => void;
 };
 
-const PushNotificationItems: React.FC<Props> = ({ title }) => {
-  const [isEnabled, setIsEnabled] = useState(false);
+const PushNotificationItems: React.FC<Props> = ({ title, check, state }) => {
+  const [isEnabled, setIsEnabled] = useState(check);
 
   return (
     <SafeAreaView>
@@ -28,7 +30,10 @@ const PushNotificationItems: React.FC<Props> = ({ title }) => {
             offColor="grey"
             labelStyle={{ color: 'black', fontWeight: '900' }}
             size="medium"
-            onToggle={(isOn) => setIsEnabled(isOn)}
+            onToggle={(isEnabled) => {{
+              setIsEnabled(isEnabled);
+              state(isEnabled)}
+            }}
           />
         </View>
       </View>
